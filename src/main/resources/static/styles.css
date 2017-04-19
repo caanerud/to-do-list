@@ -1,0 +1,13 @@
+body{
+    background-image: url("https://images.pexels.com/photos/3299/postit-scrabble-to-do.jpg?w=1260&h=750&auto=compress&cs=tinysrgb");
+    color: white;
+}
+table{
+    border-collapse: collapse;
+    min-width: 20%;
+}
+td, th {
+    border: 1px solid white;
+    margin: 0;
+    padding: 0.25em;
+}
