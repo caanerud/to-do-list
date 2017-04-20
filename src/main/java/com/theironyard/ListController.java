@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 /**
@@ -22,4 +23,19 @@ public class ListController {
         return "index";
     }
 
+    @GetMapping("/listForm")
+    public String listForm(Model model, Integer id) {
+        if (id == null) {
+            model.addAttribute("task", new ToDoList());
+        } else {
+            model.addAttribute("task", listRepository.getTask(id));
+        }
+        return "personForm";
+    }
+
+    @PostMapping("/saveTask")
+    public String saveTask(ToDoList task){
+        listRepository.saveTask(task);
+        return "redirect:/";
+    }
 }

@@ -12,7 +12,7 @@
 <nav>
     <ul>
         <li style="color:white"><a href="index.html" style="color:white" th:href="@{/}">Home</a></li>
-        <li style="color:white"><a href="listForm.html" style="color:white" th:href="@{/listForm}">Add To-Do List</a></li>
+        <li style="color:white"><a href="listForm.html" style="color:white" th:href="@{/listForm}">Add Task</a></li>
     </ul>
 </nav>
 
@@ -21,20 +21,20 @@
 <form action="index.html" th:action="@{/}" method="get">
     <label>
         <span>Search for a task:</span>
-        <input type="text" name="search" value="" th:value="${search}" />
+        <input type="text" name="search" value="" th:value="${search}"/>
     </label>
     <button>Search</button>
 </form>
 
-<!--<p>Showing <span th:text="${tasks.size()}">2</span> tasks.</p>-->
+<p>Showing <span th:text="${tasks.size()}">2</span> tasks.</p>
 
 <table>
     <tr>
-        <tr>
+    <tr>
         <th>
             <a href="index.html" style="color:white" th:href="@{/}" title="Sort by task name">Task name</a>
         </th>
-</tr>
+    </tr>
     <tr>
         <th>
             <a href="index.html" style="color:white" th:href="@{/}" title="Sort by task details">Task details</a>
@@ -42,23 +42,25 @@
     </tr>
     <tr>
         <th>
-            <a href="index.html" style="color:white" th:href="@{/}" title="Sort by task priority">Task priority</a>
+            <a href="index.html" style="color:white" th:href="@{/}" title="Sort by task priority (0=low, 5=high)">Task
+                priority</a>
         </th>
     </tr>
     <tr>
         <th>
-            <a href="index.html" style="color:white" th:href="@{/}" title="Sort by task due date">Task due date</a>
+            <a href="index.html" style="color:white" th:href="@{/}" title="Sort by task due date (yyyy-mm-dd)">Task due
+                date</a>
         </th>
     </tr>
     <tr>
         <th>
-            <a href="index.html" style="color:white" th:href="@{/}" title="Sort by task completed ">Task completed (y/n)</a>
+            <a href="index.html" style="color:white" th:href="@{/}" title="Sort by task completed ">Task completed
+                (y/n)</a>
         </th>
     </tr>
-
-</tr>
+    </tr>
     <tr th:each="task : ${tasks}">
-        <td th:text="${task.getTask()}">Laundry</td>
+        <td th:text="${task.getTaskName()}">Laundry</td>
         <td th:text="${task.getDetails()}">Wash, fold, and put away laundry</td>
         <td th:text="${task.getPriority()}">2 - Medium</td>
         <td th:text="${task.getDueDate()}">2017/04/17</td>

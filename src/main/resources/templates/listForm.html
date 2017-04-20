@@ -1,10 +1,54 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
-    <title>To-Do List Form Page</title>
+    <title>To-Do List Task Page</title>
+    <link rel="stylesheet" href="../static/styles.css" th:href="@{/styles.css}"/>
+
 </head>
 <body>
+<nav>
+    <ul>
+        <li><a href="index.html" th:href="@{/}">Home</a></li>
+        <li><a href="listForm.html" th:href="@{/listForm}">Add Task</a></li>
+    </ul>
+</nav>
+
+<h1>Add/Edit Task</h1>
+
+<p>Please enter information below to <span>add/edit</span> a task.</p>
+
+<form action="index.html" th:action="@{/saveTask}" method="post" th:object="${task}">
+    <label>
+        <span>Task name:</span>
+        <input type="text" name="taskName" value="" th:value="*{taskName}"/>
+    </label>
+
+    <label>
+        <span>Task details:</span>
+        <input type="text" name="details" value="" th:value="*{details}" />
+    </label>
+
+    <label>
+        <span>Task Priority:</span>
+        <input type="text" name="priority" value="" th:value="*{priority}"/>
+    </label>
+
+    <label>
+        <span>Task due date:</span>
+        <input type="text" name="dueDate" value="" th:value="*{dueDate}" />
+    </label>
+
+    <label>
+        <span>Task Completed: y/n</span>
+        <input type="text" name="completed" value="" th:value="*{completed}"/>
+    </label>
+
+    <input type="hidden" name="id" value="" th:value="*{id}"  />
+
+    <button>Save Task</button>
+</form>
+
 
 </body>
 </html>

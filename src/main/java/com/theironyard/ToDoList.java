@@ -5,26 +5,41 @@ import java.util.Date;
 /**
  * Created by chrisaanerud on 4/18/17.
  */
-public class List {
+public class ToDoList {
     private Integer id;
     private boolean completed;
     private Date dueDate;
     private Integer priority;
-    private String task;
+    private String taskName;
     private String details;
     private Integer user;
 
-    public List(Integer id, boolean completed, Date dueDate, Integer priority, String task, String details, Integer user) {
+    public ToDoList(Integer id, boolean completed, Date dueDate, Integer priority, String task, String details, Integer user) {
         this.id = id;
         this.completed = completed;
         this.dueDate = dueDate;
         this.priority = priority;
-        this.task = task;
+        this.taskName = task;
         this.details = details;
         this.user = user;
     }
 
-    public List(){
+    @Override
+    public String toString() {
+        return "ToDoList{" +
+                "id=" + id +
+                ", completed=" + completed +
+                ", dueDate=" + dueDate +
+                ", priority=" + priority +
+                ", taskName='" + taskName + '\'' +
+                ", details='" + details + '\'' +
+                ", user=" + user +
+                '}';
+
+
+}
+
+    public ToDoList(){
 
     }
 
@@ -60,12 +75,12 @@ public class List {
         this.priority = priority;
     }
 
-    public String getTask() {
-        return task;
+    public String getTaskName() {
+        return taskName;
     }
 
-    public void setTask(String task) {
-        this.task = task;
+    public void setTaskName(String task) {
+        this.taskName = task;
     }
 
     public String getDetails() {
