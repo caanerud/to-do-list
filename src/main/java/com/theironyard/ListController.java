@@ -30,7 +30,7 @@ public class ListController {
         } else {
             model.addAttribute("task", listRepository.getTask(id));
         }
-        return "personForm";
+        return "listForm";
     }
 
     @PostMapping("/saveTask")

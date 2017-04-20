@@ -26,7 +26,7 @@
     <button>Search</button>
 </form>
 
-<p>Showing <span th:text="${tasks.size()}">2</span> tasks.</p>
+<p>Showing <span th:text="${tasks.size()}">2</span> task(s).</p>
 
 <table>
     <tr>
@@ -60,12 +60,24 @@
     </tr>
     </tr>
     <tr th:each="task : ${tasks}">
+        <tr>
         <td th:text="${task.getTaskName()}">Laundry</td>
+</tr>
+    <tr>
         <td th:text="${task.getDetails()}">Wash, fold, and put away laundry</td>
+    </tr>
+    <tr>
         <td th:text="${task.getPriority()}">2 - Medium</td>
+    </tr>
+    <tr>
         <td th:text="${task.getDueDate()}">2017/04/17</td>
+    </tr>
+    <tr>
         <td th:text="${task.getCompleted()}">no</td>
-        <td><a href="listForm.html" th:href="@{'/listForm?taskId='} + ${person.getTaskId()}">Edit</a></td>
+    </tr>
+    <tr>
+        <td><a href="listForm.html" th:href="@{'/listForm?taskId='} + ${task.getId()}">Edit</a></td>
+    </tr>
     </tr>
 
 </table>

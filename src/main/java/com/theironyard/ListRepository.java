@@ -23,11 +23,11 @@ public class ListRepository {
     public List<ToDoList> listTasks(String search) {
         return jdbcTemplate.query(
                 "SELECT * FROM \"Tasks\" WHERE lower(taskname) LIKE lower(?) " +
-                        " OR lower(details) LIKE lower(?)" +
-                        " OR priority = ?" +
-                        " OR duedate = ?" +
-                        " OR completed = ?",
-                new Object[]{"%" + search + "%", "%" + search + "%", "%" + search + "%", "%" + search + "%", "%" + search + "%"},
+                        " OR lower(details) LIKE lower(?) ORDER BY completed",
+                      //  " OR priority = ?" +
+                       // " OR duedate = ?" +
+                      //  " OR completed = ?",
+                new Object[]{"%" + search + "%", "%" + search + "%"},
                 (resultSet, i) -> new ToDoList(
                         resultSet.getInt("id"),
                         resultSet.getBoolean("completed"),
@@ -39,6 +39,7 @@ public class ListRepository {
 
                 )
         ) ;
+
     }
 
     public ToDoList getTask(Integer id) {
