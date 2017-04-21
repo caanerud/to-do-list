@@ -1,5 +1,6 @@
 package com.theironyard;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
@@ -10,6 +11,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.Statement;
 import java.util.List;
+
 
 /**
  * Created by chrisaanerud on 4/18/17.
@@ -38,6 +40,7 @@ public class ListRepository {
                         resultSet.getInt("user")
 
                 )
+
         ) ;
 
     }
@@ -72,8 +75,8 @@ public class ListRepository {
 
                         ps.setString(1, task.getTaskName());
                         ps.setString(2, task.getDetails());
-                        ps.setInt(3, task.getPriority());
-                        ps.setDate(4, (Date) task.getDueDate());
+                        ps.setObject(3, task.getPriority());
+                        ps.setDate(4, new java.sql.Date(task.getDueDate().getTime()));
                         ps.setBoolean(5, task.getCompleted());
 
                         return ps;

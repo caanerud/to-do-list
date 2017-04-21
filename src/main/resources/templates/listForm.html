@@ -20,6 +20,7 @@
 
 <form action="index.html" th:action="@{/saveTask}" method="post" th:object="${task}">
     <label>
+
         <span>Task name:</span>
         <input type="text" name="taskName" value="" th:value="*{taskName}"/>
     </label>
@@ -36,18 +37,33 @@
 
     <label>
         <span>Task due date:</span>
-        <input type="text" name="dueDate" value="" th:value="*{dueDate}" />
+        <input type="date" name="dueDate" value="" th:value="*{dueDate}" />
     </label>
 
     <label>
         <span>Task Completed: y/n</span>
-        <input type="text" name="completed" value="" th:value="*{completed}"/>
+        <!--<input type="text"  name="completed" th:value="true" value="true" />-->
+        <select name ="completed">
+            <option label=" "></option>
+            <option value ="true">Y</option>
+            <option value ="false">N</option>
+        </select>
+
+
+
     </label>
 
     <input type="hidden" name="id" value="" th:value="*{id}"  />
 
     <button>Save Task</button>
 </form>
+
+<h1>To-Do Lists!!!!!!</h1>
+
+<ul th:each="toDoList : ${toDoLists}">
+    <li th:text="${toDoList.name}">To-Do List</li>
+</ul>
+
 
 
 </body>

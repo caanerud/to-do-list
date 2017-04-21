@@ -3,8 +3,10 @@ package com.theironyard;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 /**
@@ -24,18 +26,32 @@ public class ListController {
     }
 
     @GetMapping("/listForm")
-    public String listForm(Model model, Integer id) {
-        if (id == null) {
+    public String listForm(Model model, Integer taskId) {
+        if (taskId == null) {
             model.addAttribute("task", new ToDoList());
         } else {
-            model.addAttribute("task", listRepository.getTask(id));
+            model.addAttribute("task", listRepository.getTask(taskId));
         }
         return "listForm";
     }
 
     @PostMapping("/saveTask")
-    public String saveTask(ToDoList task){
+    public String saveTask(ToDoList task) {
         listRepository.saveTask(task);
         return "redirect:/";
     }
+
+//    @RequestMapping(path = "listForm")
+//    public String listToDoLists(ModelMap model) {
+//
+//        model.addAttribute("toDoLists", ListService.listToDoLists());
+//
+//        return "toDoLists";
+//    }
+//
+//    @PostMapping("/createList")
+//    public String createToDoList(String name) {
+//        listService.createToDoList(name);
+//        return "redirect:/";
+//    }
 }

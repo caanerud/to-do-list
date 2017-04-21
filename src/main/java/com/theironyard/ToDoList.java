@@ -1,5 +1,8 @@
 package com.theironyard;
 
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.web.bind.annotation.RequestParam;
+
 import java.util.Date;
 
 /**
@@ -8,11 +11,12 @@ import java.util.Date;
 public class ToDoList {
     private Integer id;
     private boolean completed;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dueDate;
-    private Integer priority;
+    private Integer priority = 0;
     private String taskName;
     private String details;
-    private Integer user;
+    private Integer user = 1;
 
     public ToDoList(Integer id, boolean completed, Date dueDate, Integer priority, String task, String details, Integer user) {
         this.id = id;
