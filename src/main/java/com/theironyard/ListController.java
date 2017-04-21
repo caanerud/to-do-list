@@ -40,18 +40,19 @@ public class ListController {
         listRepository.saveTask(task);
         return "redirect:/";
     }
+    @Autowired
+    public ListService listService;
+    @RequestMapping(path = "listForm")
+    public String listToDoLists(ModelMap model) {
 
-//    @RequestMapping(path = "listForm")
-//    public String listToDoLists(ModelMap model) {
-//
-//        model.addAttribute("toDoLists", ListService.listToDoLists());
-//
-//        return "toDoLists";
-//    }
-//
-//    @PostMapping("/createList")
-//    public String createToDoList(String name) {
-//        listService.createToDoList(name);
-//        return "redirect:/";
-//    }
+        model.addAttribute("toDoLists", listService.listToDoLists());
+
+        return "toDoLists";
+    }
+
+    @PostMapping("/createList")
+    public String createToDoList(String name) {
+        listService.createToDoList(name);
+        return "redirect:/";
+    }
 }
