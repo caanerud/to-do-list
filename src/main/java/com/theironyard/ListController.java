@@ -42,12 +42,13 @@ public class ListController {
     }
     @Autowired
     public ListService listService;
+
     @RequestMapping(path = "listForm")
     public String listToDoLists(ModelMap model) {
 
         model.addAttribute("toDoLists", listService.listToDoLists());
 
-        return "toDoLists";
+        return "listToDoLists";
     }
 
     @PostMapping("/createList")

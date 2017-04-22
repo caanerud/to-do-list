@@ -55,7 +55,7 @@ CREATE TABLE "Tasks" (
     completed integer DEFAULT 0 NOT NULL,
     duedate date,
     priority integer DEFAULT 0 NOT NULL,
-    task character varying(250),
+    taskname character varying(250),
     details character varying(400),
     "user" integer NOT NULL
 );
@@ -91,7 +91,7 @@ COPY "Priorities" (id, name) FROM stdin;
 -- Data for Name: Tasks; Type: TABLE DATA; Schema: public; Owner: chrisaanerud
 --
 
-COPY "Tasks" (id, completed, duedate, priority, task, details, "user") FROM stdin;
+COPY "Tasks" (id, completed, duedate, priority, taskname, details, "user") FROM stdin;
 1	0	2017-04-18	0	Learn Java	Learn a new programming language	1
 \.
 

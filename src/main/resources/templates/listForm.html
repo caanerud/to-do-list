@@ -26,7 +26,7 @@
     </label>
 
     <label>
-        <span>Task details:</span>
+        <span>Task details and/or notes:</span>
         <input type="text" name="details" value="" th:value="*{details}" />
     </label>
 
@@ -61,9 +61,9 @@
 <h1>To-Do Lists</h1>
 
 <ul th:each="toDoList : ${toDoLists}">
-    <li th:text="${toDoList.name}">To-Do List</li>
+    <li th:text="${toDoList.getName()}">To-Do List</li>
 </ul>
-
+<div th:text="${toDoLists}"></div>
 
 
 </body>

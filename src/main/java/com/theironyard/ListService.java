@@ -18,14 +18,13 @@ public class ListService {
     String apiUrl;
 
 
-        public List<RememberMilkLists> listToDoLists(){
-            RestTemplate restTemplate = new RestTemplate();
-            RememberMilkLists[] toDoLists = restTemplate.getForObject(
-                    apiUrl + "rtm.locations.getList" + this.apiKey,
-                    RememberMilkLists[].class);
-            return Arrays.asList(toDoLists);
-
-        }
+    public List<RememberMilkLists> listToDoLists(){
+        RestTemplate restTemplate = new RestTemplate();
+        RememberMilkLists[] toDoLists = restTemplate.getForObject(
+                apiUrl + "/services/auth/?api_key=" + this.apiKey,
+                RememberMilkLists[].class);
+        return Arrays.asList(toDoLists);
+    }
 
     public RememberMilkLists createToDoList(String name){
 
@@ -33,7 +32,7 @@ public class ListService {
         toDoList.setName(name);
 
         RestTemplate restTemplate = new RestTemplate();
-        return restTemplate.postForObject(apiUrl + "rtm.locations.getList"
+        return restTemplate.postForObject(apiUrl + "/services/auth/?api_key="
                 + this.apiKey, toDoList, RememberMilkLists.class);
     }
 

@@ -32,21 +32,21 @@
     <tr th:each="task : ${tasks}">
     <tr>
         <th>
-            <a href="index.html" style="color:black" th:href="@{/}" title="Sort by task name">Task name:</a>
+            <a href="listForm.html" th:href="@{'/listForm?taskId='} + ${task.getId()}" title="Sort by task name">Task name:</a>
     <td th:text="${task.getTaskName()}">Laundry</td>
 
     </th>
     </tr>
     <tr>
         <th>
-            <a href="index.html" style="color:black" th:href="@{/}" title="Sort by task details">Task details:</a>
+            <a href="listForm.html" th:href="@{'/listForm?taskId='} + ${task.getId()}" title="Sort by task details">Task details and/or notes:</a>
         <td th:text="${task.getDetails()}">Wash, fold, and put away laundry</td>
 
         </th>
     </tr>
     <tr>
         <th>
-            <a href="index.html" style="color:black" th:href="@{/}" title="Sort by task priority (0=low, 5=high):">Task
+            <a href="listForm.html" th:href="@{'/listForm?taskId='} + ${task.getId()}" title="Sort by task priority (0=low, 5=high):">Task
                 priority:</a>
         <td th:text="${task.getPriority()}">2 - Medium</td>
 
@@ -54,7 +54,7 @@
     </tr>
     <tr>
         <th>
-            <a href="index.html" style="color:black" th:href="@{/}" title="Sort by task due date (yyyy-mm-dd)">Task due
+            <a href="listForm.html" th:href="@{'/listForm?taskId='} + ${task.getId()}" title="Sort by task due date (yyyy-mm-dd)">Task due
                 date:</a>
         <td th:text="${task.getDueDate()}">2017/04/17</td>
 
@@ -62,8 +62,8 @@
     </tr>
     <tr>
         <th>
-            <a href="index.html" style="color:black" th:href="@{/}" title="Sort by task completed ">Task completed
-                (y/n):</a>
+            <a href="listForm.html" th:href="@{'/listForm?taskId='} + ${task.getId()}" title="Sort by task completed ">Task completed
+                (true/false):</a>
         <td th:text="${task.getCompleted()}">no</td>
 
 
