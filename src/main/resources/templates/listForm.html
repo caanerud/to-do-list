@@ -23,39 +23,48 @@
 
         <span>Task name:</span>
         <input type="text" name="taskName" value="" th:value="*{taskName}"/>
+        <ul class="error"><li th:each="err : ${#fields.errors('taskName')}" th:text="${err}">Error!</li></ul>
     </label>
 
     <label>
         <span>Task details and/or notes:</span>
         <input type="text" name="details" value="" th:value="*{details}" />
+        <ul class="error"><li th:each="err : ${#fields.errors('details')}" th:text="${err}">Error!</li></ul>
+
     </label>
 
     <label>
         <span>Task Priority:</span>
         <!--<input type="text" name="priority" value="" th:value="*{priority}"/>-->
-        <select name ="priority">
-            <option label=" "></option>
+        <select name ="priority" th:field="*{priority}">
+            <option label=" " value=""></option>
             <option value ="1">1</option>
             <option value ="2">2</option>
             <option value ="3">3</option>
             <option value ="4">4</option>
             <option value ="5">5</option>
         </select>
+        <ul class="error"><li th:each="err : ${#fields.errors('priority')}" th:text="${err}">Error!</li></ul>
+
     </label>
 
     <label>
         <span>Task due date:</span>
         <input type="date" name="dueDate" value="" th:value="*{dueDate}" />
+        <ul class="error"><li th:each="err : ${#fields.errors('dueDate')}" th:text="${err}">Error!</li></ul>
+
     </label>
 
     <label>
         <span>Task Completed: True/False</span>
         <!--<input type="text"  name="completed" th:value="true" value="true" />-->
-        <select name ="completed">
-            <option label=" "></option>
+        <select name ="completed" th:field="*{completed}">
+            <option label=" " value="false"></option>
             <option value ="true">True</option>
             <option value ="false">False</option>
         </select>
+        <ul class="error"><li th:each="err : ${#fields.errors('completed')}" th:text="${err}">Error!</li></ul>
+
 
 
 

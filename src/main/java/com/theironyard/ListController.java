@@ -1,13 +1,14 @@
 package com.theironyard;
 
+import org.springframework.validation.BindingResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
+
+import javax.validation.Valid;
 
 /**
  * Created by chrisaanerud on 4/18/17.
@@ -25,6 +26,10 @@ public class ListController {
         return "index";
     }
 
+//        @Override
+//    public void addViewControllers(ViewControllerRegistry registry) {
+//        registry.addViewController("/results").setViewName("results");
+
     @GetMapping("/listForm")
     public String listForm(Model model, Integer taskId) {
         if (taskId == null) {
@@ -36,7 +41,11 @@ public class ListController {
     }
 
     @PostMapping("/saveTask")
-    public String saveTask(ToDoList task) {
+    public String saveTask(@Valid @ModelAttribute("task") ToDoList task, BindingResult bindingResult, Model model) {
+        if(bindingResult.hasErrors()){
+            model.addAttribute("task", task);
+            return "listForm";
+        }
         listRepository.saveTask(task);
         return "redirect:/";
     }
