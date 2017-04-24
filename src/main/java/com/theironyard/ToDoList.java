@@ -3,6 +3,8 @@ package com.theironyard;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.Date;
 
 /**
@@ -13,8 +15,12 @@ public class ToDoList {
     private boolean completed;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dueDate;
-    private Integer priority = 0;
+    private Integer priority;
+    @Size(min=2, max=30)
+    @NotNull
     private String taskName;
+    @Size(min=2, max=255)
+    @NotNull
     private String details;
     private Integer user = 1;
 
