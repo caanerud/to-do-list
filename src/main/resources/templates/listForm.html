@@ -23,13 +23,13 @@
 
         <span>Task name:</span>
         <input type="text" name="taskName" value="" th:value="*{taskName}"/>
-        <ul class="error"><li th:each="err : ${#fields.errors('taskName')}" th:text="${err}">Error!</li></ul>
+        <ul class="error"><li th:each="err : ${#fields.errors('taskName')}" th:text="${err}">Error! Please create a name for your task.</li></ul>
     </label>
 
     <label>
         <span>Task details and/or notes:</span>
         <input type="text" name="details" value="" th:value="*{details}" />
-        <ul class="error"><li th:each="err : ${#fields.errors('details')}" th:text="${err}">Error!</li></ul>
+        <ul class="error"><li th:each="err : ${#fields.errors('details')}" th:text="${err}">Error! Please describe your task.</li></ul>
 
     </label>
 
@@ -44,14 +44,14 @@
             <option value ="4">4</option>
             <option value ="5">5</option>
         </select>
-        <ul class="error"><li th:each="err : ${#fields.errors('priority')}" th:text="${err}">Error!</li></ul>
+        <ul class="error"><li th:each="err : ${#fields.errors('priority')}" th:text="${err}">Error! Please select a number for your priority.</li></ul>
 
     </label>
 
     <label>
         <span>Task due date:</span>
         <input type="date" name="dueDate" value="" th:value="*{dueDate}" />
-        <ul class="error"><li th:each="err : ${#fields.errors('dueDate')}" th:text="${err}">Error!</li></ul>
+        <ul class="error"><li th:each="err : ${#fields.errors('dueDate')}" th:text="${err}">Error! Please select a valid date.</li></ul>
 
     </label>
 
@@ -63,7 +63,7 @@
             <option value ="true">True</option>
             <option value ="false">False</option>
         </select>
-        <ul class="error"><li th:each="err : ${#fields.errors('completed')}" th:text="${err}">Error!</li></ul>
+        <ul class="error"><li th:each="err : ${#fields.errors('completed')}" th:text="${err}">Error! Please select whether or not you've completed this task.</li></ul>
 
 
 
