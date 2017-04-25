@@ -7,9 +7,7 @@ import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Component;
 
-import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.List;
 
 
@@ -21,6 +19,8 @@ import java.util.List;
 public class ListRepository {
     @Autowired
     JdbcTemplate jdbcTemplate;
+
+
 
     public List<ToDoList> listTasks(String search) {
         return jdbcTemplate.query(
@@ -110,6 +110,12 @@ public class ListRepository {
 
 
         return task;
+
+    }
+
+    public void deleteTask(Integer id) throws SQLException {
+            jdbcTemplate.update(
+                "DELETE FROM \"Tasks\" WHERE id = ?", new Object[]{id});
 
     }
 }

@@ -73,6 +73,8 @@
     <input type="hidden" name="id" value="" th:value="*{id}"  />
 
     <button>Save Task</button>
+    <a class="delete" onclick="return confirm('Are you sure you want to delete this item?');" th:href="@{'/deletetask?id='+${task.id}}">delete</a>
+
 </form>
 
 <h1>To-Do Lists</h1>

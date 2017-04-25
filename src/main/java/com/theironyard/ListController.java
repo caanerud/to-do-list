@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 
 import javax.validation.Valid;
+import java.sql.SQLException;
 
 /**
  * Created by chrisaanerud on 4/18/17.
@@ -47,6 +48,14 @@ public class ListController {
             return "listForm";
         }
         listRepository.saveTask(task);
+        return "redirect:/";
+    }
+    @GetMapping("/deletetask")
+    public String deleteTask(Model model,Integer id) throws SQLException {
+        System.out.println(id);
+        listRepository.deleteTask(id);
+
+//        model.addAttribute("id", listRepository.deleteTask(id));
         return "redirect:/";
     }
     @Autowired
